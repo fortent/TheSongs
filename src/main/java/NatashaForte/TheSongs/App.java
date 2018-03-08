@@ -1,27 +1,19 @@
+/**********************************************************
+Author: fortent
+Date : 2018/03/08
+Ref: website link to code referenced or the book, authors name and page number 
+************************************************************/
 package NatashaForte.TheSongs;
 
 
 import java.util.Date;
 import java.util.Scanner;
-
-/*****************************************************************
- *
- *	Date: 2017
- *	@author COR
- *
- * 
- * The purpose of this application is to provide an example for the following:
- * 
- * - Demonstrates the use of development tools : GIT, MAVEN, Eclipse
- * - Demonstrates how to use Eclipse
- * - Provides a refresher of OOP in Java
- * - Provide an introduction to project file structure layout - MAVEN Archetype
- * 
- *****************************************************************/
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class App 
 {
-    public static void main( String[] args )
+    public static void main ( String[] args )
     {
 		// To view the arguments being entered
 		seeCommandlineInput(args);
@@ -37,11 +29,17 @@ public class App
 	private	Scanner someInput;
 	private Date today;
 	
+	private static Logger LOG;
 	// CONSTRUCTORS
 	//............................................................
 	
+	
 	public App()
 	{		
+		LOG = LogManager.getLogger(App.class);
+		
+		testLogOutput();
+		
 		this.someInput = new Scanner(System.in);
 		
 		//do something here
@@ -91,4 +89,14 @@ public class App
 		 
 	 }
     
+	 private static void testLogOutput()
+	 {
+		 LOG.debug("Log test: Test printed on debug");
+		 LOG.info("Log test: Test printed on info");
+		 LOG.warn("Log test: Test printed on warn");
+		 LOG.error("Log test: Test printed on error");
+		 LOG.fatal("Log test: Test printed on fatal");
+		 
+		 LOG.info("Appending string: {}.", "Application log test message - HI");
+	 }
 }//EOC
